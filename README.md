@@ -10,14 +10,14 @@ A production-grade fraud detection system built on the [IEEE-CIS Fraud Detection
 
 | Stage | What it does | Key tools |
 |---|---|---|
-| 1 ; Ingestion | Raw Kaggle CSVs → PostgreSQL (entity-relationship columns) + Parquet (full 435-column feature set) | Pandas, SQLAlchemy, PostgreSQL |
-| 2 ; Graph construction | Transaction graph via shared card/device entities, time-windowed to 7-day bursts to distinguish fraud rings from legitimate repeat customers | NetworkX |
-| 3 ; Baseline model | Random Forest on tabular + graph features; with vs. without graph features comparison | Scikit-learn |
-| 4 ; GNN model | 2-layer GraphSAGE via mini-batch neighbor sampling; validation tracking, LR scheduling, early stopping, best-checkpoint restore | PyTorch, PyTorch Geometric |
-| 5 ; Experiment tracking | All runs logged with params, per-epoch metrics, and final test scores | MLflow |
-| 6 ; Explainability | SHAP (global importance + local drivers) and LIME (local, top-30 SHAP-feature subspace) on the deployed model | SHAP, LIME |
-| 7 ; Dashboard | Four-panel Tableau Public dashboard: fraud score distribution, model comparison, SHAP importance, GNN training curve | Tableau Public |
-| 7 ; Guardrails | Natural-language → SQL via Groq LLM; sqlglot AST validation blocks all non-SELECT statements; read-only Postgres role as defense in depth | Groq API, sqlglot, PostgreSQL |
+| 1. Ingestion | Raw Kaggle CSVs → PostgreSQL (entity-relationship columns) + Parquet (full 435-column feature set) | Pandas, SQLAlchemy, PostgreSQL |
+| 2. Graph construction | Transaction graph via shared card/device entities, time-windowed to 7-day bursts to distinguish fraud rings from legitimate repeat customers | NetworkX |
+| 3. Baseline model | Random Forest on tabular + graph features; with vs. without graph features comparison | Scikit-learn |
+| 4. GNN model | 2-layer GraphSAGE via mini-batch neighbor sampling; validation tracking, LR scheduling, early stopping, best-checkpoint restore | PyTorch, PyTorch Geometric |
+| 5. Experiment tracking | All runs logged with params, per-epoch metrics, and final test scores | MLflow |
+| 6. Explainability | SHAP (global importance + local drivers) and LIME (local, top-30 SHAP-feature subspace) on the deployed model | SHAP, LIME |
+| 7. Dashboard | Four-panel Tableau Public dashboard: fraud score distribution, model comparison, SHAP importance, GNN training curve | Tableau Public |
+| 8. Guardrails | Natural-language → SQL via Groq LLM; sqlglot AST validation blocks all non-SELECT statements; read-only Postgres role as defense in depth | Groq API, sqlglot, PostgreSQL |
 
 ---
 
@@ -140,7 +140,7 @@ graphguard/
 │   ├── log_historical_runs.py  # Stage 5: MLflow backfill
 │   ├── explain.py              # Stage 6: SHAP + LIME
 │   ├── export_tableau.py       # Stage 7: dashboard data export
-│   └── guardrail.py            # Stage 7: text-to-SQL + guardrails
+│   └── guardrail.py            # Stage 8: text-to-SQL + guardrails
 ├── tests/
 │   └── generate_synthetic_sample.py
 ├── .env.example
