@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+.env
+data/raw/**/*.csv
+data/processed/*.parquet
+data/processed/*.pkl
+data/processed/*.joblib
+data/processed/*.pt
+mlruns/
+mlflow.db
+.DS_Store

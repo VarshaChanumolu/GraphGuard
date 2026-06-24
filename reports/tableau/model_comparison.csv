@@ -1,0 +1,7 @@
+run_name,stage,test_auc,test_pr_auc
+rf_with_graph_features,3-baseline,0.8688,0.4478
+rf_no_graph_features,3-baseline,0.8674,0.4431
+gnn_v2_tuned,4-gnn,0.8441,0.3813
+gnn_v1_initial,4-gnn,0.8282,0.1707
+rf_with_graph_features,3-baseline,0.8688,0.4478
+rf_no_graph_features,3-baseline,0.8674,0.4431

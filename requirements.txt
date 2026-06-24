@@ -1,0 +1,17 @@
+# Stage 1: ingestion
+pandas>=2.2
+numpy>=1.26
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
+python-dotenv>=1.0
+PyYAML>=6.0
+pyarrow>=15.0
+
+# Later stages (uncomment as we build them):
+networkx>=3.2          # Stage 2: graph construction
+scikit-learn>=1.4       # Stage 3: baseline
+torch>=2.2               # Stage 4: GNN
+torch-geometric>=2.5     # Stage 4: GNN
+mlflow>=2.11              # Stage 5: experiment tracking
+lime>=0.2.0.1              # Stage 6: explainability
+shap>=0.45                  # Stage 6: explainability
